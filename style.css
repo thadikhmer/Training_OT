@@ -1,44 +1,43 @@
-/* កំណត់ Font គោលសម្រាប់ Website ទាំងមូល */
 body {
     font-family: 'Kantumruy Pro', sans-serif;
+    /* Texture តិចៗនៅលើ Background */
+    background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
-/* សម្រាប់លេខ និងអក្សរអង់គ្លេស ប្រើ Poppins អោយស្អាត */
-.font-poppins {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Animation ពេលបង្ហាញតារាង */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.animate-fade-in-up {
-    animation: fadeInUp 0.5s ease-out forwards;
-}
+.font-poppins { font-family: 'Poppins', sans-serif; }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-/* Table Hover */
-tr:hover {
-    background-color: #f8fafc;
+/* Dark mode scrollbar support */
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+/* Animation សម្រាប់ Orbs ខាងក្រោយ (Blob Animation) */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob {
+    animation: blob 7s infinite;
+}
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* Table Hover Effect in Dark Mode */
+.dark tr:hover td { background-color: rgba(30, 41, 59, 0.5); }
+tr:hover td { background-color: rgba(241, 245, 249, 0.8); }
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

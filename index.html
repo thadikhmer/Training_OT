@@ -1,90 +1,100 @@
 <!DOCTYPE html>
-<html lang="km">
-<head>
+<html lang="km" class="light"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Training Attendance</title>
+    <title>Smart IT Attendance</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // បើកមុខងារ Dark Mode
+        }
+    </script>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-500 font-kantumruy relative overflow-x-hidden min-h-screen">
 
-    <div class="fixed inset-0 -z-10">
-        <div class="absolute top-0 left-0 w-full h-80 bg-gradient-to-r from-blue-700 to-indigo-800 rounded-b-[2.5rem] shadow-xl"></div>
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-400/30 dark:bg-indigo-600/20 blur-[100px] animate-blob mix-blend-multiply dark:mix-blend-screen"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-400/30 dark:bg-blue-600/20 blur-[100px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen"></div>
+        <div class="absolute top-[20%] left-[30%] w-[400px] h-[400px] rounded-full bg-pink-300/30 dark:bg-purple-800/20 blur-[100px] animate-blob animation-delay-4000 mix-blend-multiply dark:mix-blend-screen"></div>
     </div>
+
+    <button onclick="toggleTheme()" class="fixed top-5 right-5 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 group">
+        <i class="fa-solid fa-sun text-yellow-400 text-xl hidden dark:block group-hover:rotate-90 transition-transform"></i>
+        <i class="fa-solid fa-moon text-slate-600 text-xl block dark:hidden group-hover:-rotate-12 transition-transform"></i>
+    </button>
 
     <div class="container mx-auto px-4 py-8 max-w-5xl">
         
-        <div class="text-white mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 relative z-10">
             <div>
-                <h1 class="text-3xl md:text-4xl font-bold flex items-center gap-3 drop-shadow-md">
-                    <i class="fa-solid fa-clipboard-user"></i> វត្តមាន IT_Training
+                <h1 class="text-3xl md:text-4xl font-bold flex items-center gap-3 text-slate-800 dark:text-white tracking-tight">
+                    <span class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30">
+                        <i class="fa-solid fa-clipboard-user"></i>
+                    </span>
+                    វត្តមាន IT_Training
                 </h1>
-                <p class="opacity-90 mt-2 text-sm font-light">កត់ត្រាវត្តមានប្រចាំថ្ងៃយ៉ាងងាយស្រួល</p>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm font-medium tracking-wide ml-1">ប្រព័ន្ធគ្រប់គ្រងវត្តមានប្រចាំថ្ងៃទំនើប</p>
             </div>
             
-            <div class="text-right bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
-                <div class="text-xs opacity-80 font-poppins uppercase tracking-wider">Today's Date</div>
-                <div id="dateDisplay" class="text-lg font-bold font-poppins text-white">Loading...</div>
+            <div class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 px-5 py-3 rounded-2xl shadow-sm flex flex-col items-end">
+                <div class="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-poppins font-bold mb-1">Today's Date</div>
+                <div id="dateDisplay" class="text-lg font-bold font-poppins text-indigo-600 dark:text-indigo-400">Loading...</div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
-            <div class="bg-white rounded-2xl p-6 shadow-lg border-l-8 border-blue-500 flex items-center justify-between transform hover:scale-[1.01] transition-all duration-300">
+            <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-between hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 group">
                 <div>
-                    <p class="text-gray-400 text-sm font-medium">បុគ្គលិកសរុប</p>
-                    <h3 class="text-4xl font-bold text-blue-600 mt-1 font-poppins" id="totalStaff">0</h3>
+                    <p class="text-slate-400 dark:text-slate-400 text-sm font-medium mb-1">បុគ្គលិកសរុប</p>
+                    <h3 class="text-4xl font-bold text-slate-800 dark:text-white font-poppins group-hover:text-blue-500 transition-colors" id="totalStaff">0</h3>
                 </div>
-                <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-500 shadow-sm">
+                <div class="w-14 h-14 bg-blue-50 dark:bg-slate-700 rounded-2xl flex items-center justify-center text-blue-500 dark:text-blue-400 shadow-inner">
                     <i class="fa-solid fa-users text-2xl"></i>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-lg border-l-8 border-green-500 flex items-center justify-between transform hover:scale-[1.01] transition-all duration-300">
+            <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-between hover:border-emerald-300 dark:hover:border-emerald-500 transition-all duration-300 group">
                 <div>
-                    <p class="text-gray-400 text-sm font-medium">វត្តមាន (OT)</p>
-                    <h3 class="text-4xl font-bold text-green-600 mt-1 font-poppins" id="totalOT">0</h3>
+                    <p class="text-slate-400 dark:text-slate-400 text-sm font-medium mb-1">វត្តមាន (OT)</p>
+                    <h3 class="text-4xl font-bold text-slate-800 dark:text-white font-poppins group-hover:text-emerald-500 transition-colors" id="totalOT">0</h3>
                 </div>
-                <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-500 shadow-sm">
+                <div class="w-14 h-14 bg-emerald-50 dark:bg-slate-700 rounded-2xl flex items-center justify-center text-emerald-500 dark:text-emerald-400 shadow-inner">
                     <i class="fa-solid fa-clock text-2xl"></i>
                 </div>
             </div>
         </div>
 
-        <div class="relative mb-6 group">
+        <div class="relative mb-8 group">
             <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                <i class="fa-solid fa-search text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                <i class="fa-solid fa-search text-slate-400 group-focus-within:text-indigo-500 transition-colors"></i>
             </div>
             <input type="text" id="searchInput" placeholder="ស្វែងរកឈ្មោះបុគ្គលិក..." 
-                class="w-full pl-12 pr-6 py-4 rounded-2xl border-none shadow-lg focus:ring-4 focus:ring-blue-500/20 outline-none text-gray-700 font-medium transition-all placeholder-gray-400">
+                class="w-full pl-12 pr-6 py-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none text-slate-700 dark:text-slate-200 font-medium transition-all placeholder-slate-400 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
         </div>
 
-        <div id="loading" class="flex flex-col items-center justify-center py-12">
-            <div class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p class="text-white font-medium animate-pulse">កំពុងទាញទិន្នន័យ...</p>
+        <div id="loading" class="flex flex-col items-center justify-center py-16">
+            <div class="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 border-t-indigo-500 rounded-full animate-spin"></div>
+            <p class="text-slate-400 mt-4 font-medium animate-pulse text-sm">កំពុងទាញទិន្នន័យ...</p>
         </div>
 
         <div id="contentArea" class="hidden animate-fade-in-up">
-            <div class="hidden md:block bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="hidden md:block bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden border border-slate-100 dark:border-slate-700">
                 <table class="w-full">
-                    <thead class="bg-gray-50 border-b border-gray-100">
+                    <thead class="bg-slate-50/80 dark:bg-slate-700/50 border-b border-slate-100 dark:border-slate-700">
                         <tr>
-                            <th class="py-5 px-6 text-left w-20 text-gray-400 font-poppins">#</th>
-                            <th class="py-5 px-6 text-left text-gray-600 font-bold">ឈ្មោះ</th>
-                            <th class="py-5 px-6 text-center text-gray-600 font-bold">ភេទ</th>
-                            <th class="py-5 px-6 text-center text-gray-600 font-bold">ស្ថានភាព</th>
-                            <th class="py-5 px-6 text-right text-gray-600 font-bold">សកម្មភាព</th>
+                            <th class="py-5 px-6 text-left w-20 text-slate-400 dark:text-slate-500 font-poppins text-xs font-bold uppercase tracking-wider">#</th>
+                            <th class="py-5 px-6 text-left text-slate-500 dark:text-slate-300 font-bold text-xs uppercase tracking-wider">ឈ្មោះបុគ្គលិក</th>
+                            <th class="py-5 px-6 text-center text-slate-500 dark:text-slate-300 font-bold text-xs uppercase tracking-wider">ភេទ</th>
+                            <th class="py-5 px-6 text-center text-slate-500 dark:text-slate-300 font-bold text-xs uppercase tracking-wider">ស្ថានភាព</th>
+                            <th class="py-5 px-6 text-right text-slate-500 dark:text-slate-300 font-bold text-xs uppercase tracking-wider">សកម្មភាព</th>
                         </tr>
                     </thead>
-                    <tbody id="desktopTableBody" class="divide-y divide-gray-50">
+                    <tbody id="desktopTableBody" class="divide-y divide-slate-100 dark:divide-slate-700">
                         </tbody>
                 </table>
             </div>
@@ -92,14 +102,36 @@
             <div id="mobileCardContainer" class="md:hidden space-y-4">
                 </div>
             
-            <div id="noResult" class="hidden text-center py-12 bg-white rounded-2xl shadow-lg mt-4">
-                <i class="fa-solid fa-folder-open text-5xl text-gray-200 mb-4 block"></i>
-                <p class="text-gray-400 font-medium">រកមិនឃើញឈ្មោះនេះទេ</p>
+            <div id="noResult" class="hidden flex flex-col items-center justify-center py-12 bg-white/50 dark:bg-slate-800/50 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 mt-4">
+                <div class="bg-slate-100 dark:bg-slate-700 p-4 rounded-full mb-3">
+                    <i class="fa-solid fa-folder-open text-3xl text-slate-300 dark:text-slate-500"></i>
+                </div>
+                <p class="text-slate-400 dark:text-slate-500 font-medium">រកមិនឃើញឈ្មោះនេះទេ</p>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
+
+    <script>
+        // ពិនិត្យមើល Memory (LocalStorage) ថាធ្លាប់រើស Dark Mode ទេ?
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
 </body>
 </html>
